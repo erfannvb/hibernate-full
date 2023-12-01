@@ -20,10 +20,10 @@ import javax.persistence.*;
 @Setter
 public class Programmer extends Person {
 
-    @Column(name = "programming_language")
+    @Column(name = "programming_language", nullable = false)
     private String programmingLanguage;
 
-    @Column(name = "level")
+    @Column(name = "level", nullable = false)
     private String level;
 
 }

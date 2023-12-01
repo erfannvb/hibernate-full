@@ -20,7 +20,7 @@ import javax.persistence.*;
 @Setter
 public class Student extends Person {
 
-    @Column(name = "course")
+    @Column(name = "course", nullable = false)
     private String course;
 
 }

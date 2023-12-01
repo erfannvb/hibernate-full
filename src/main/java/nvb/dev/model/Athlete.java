@@ -20,7 +20,7 @@ import javax.persistence.*;
 @Setter
 public class Athlete extends Person {
 
-    @Column(name = "sport_field")
+    @Column(name = "sport_field", nullable = false)
     private String sportField;
 
 }

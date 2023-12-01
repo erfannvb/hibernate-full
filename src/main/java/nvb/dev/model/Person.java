@@ -14,10 +14,10 @@ import javax.persistence.*;
 @Setter
 public class Person extends BaseEntity<Long> {
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false, length = 100)
     private String lastName;
 
 }
