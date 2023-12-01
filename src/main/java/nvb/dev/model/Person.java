@@ -1,6 +1,7 @@
 package nvb.dev.model;
 
 import lombok.*;
+import nvb.dev.base.entity.BaseEntity;
 
 import javax.persistence.*;
 
@@ -11,11 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Person {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Person extends BaseEntity<Long> {
 
     @Column(name = "first_name")
     private String firstName;
