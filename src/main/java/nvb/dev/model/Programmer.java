@@ -1,5 +1,7 @@
 package nvb.dev.model;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,9 +22,13 @@ import javax.persistence.*;
 @Setter
 public class Programmer extends Person {
 
+    @NotNull(message = "programmingLanguage cannot be null")
+    @NotEmpty(message = "programmingLanguage cannot be empty")
     @Column(name = "programming_language", nullable = false)
     private String programmingLanguage;
 
+    @NotNull(message = "level cannot be null")
+    @NotEmpty(message = "level cannot be empty")
     @Column(name = "level", nullable = false)
     private String level;
 

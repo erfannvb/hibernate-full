@@ -1,5 +1,7 @@
 package nvb.dev.model;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,8 @@ import javax.persistence.*;
 @Setter
 public class Athlete extends Person {
 
+    @NotNull(message = "sportField cannot be null")
+    @NotEmpty(message = "sportField cannot be empty")
     @Column(name = "sport_field", nullable = false)
     private String sportField;
 
