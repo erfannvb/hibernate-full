@@ -16,7 +16,7 @@ public class BaseServiceImpl<ID extends Serializable, Entity extends BaseEntity<
         Repository extends BaseRepository<ID, Entity>> implements BaseService<ID, Entity> {
 
     protected final Session session;
-    private final Repository repository;
+    protected final Repository repository;
 
     @Override
     public void save(Entity entity) {
