@@ -4,11 +4,13 @@ import nvb.dev.base.repository.impl.BaseRepositoryImpl;
 import nvb.dev.model.Athlete;
 import nvb.dev.repository.AthleteRepository;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.List;
 import java.util.Optional;
 
 public class AthleteRepositoryImpl extends BaseRepositoryImpl<Long, Athlete> implements AthleteRepository {
@@ -23,6 +25,13 @@ public class AthleteRepositoryImpl extends BaseRepositoryImpl<Long, Athlete> imp
     @Override
     public Class<Athlete> getEntityClass() {
         return Athlete.class;
+    }
+
+    @Override
+    public Optional<List<Athlete>> findAllAthletes() {
+        String hql = "from Athlete";
+        Query<Athlete> query = session.createQuery(hql, Athlete.class);
+        return Optional.ofNullable(query.getResultList());
     }
 
     @Override

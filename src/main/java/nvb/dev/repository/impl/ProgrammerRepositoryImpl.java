@@ -4,11 +4,13 @@ import nvb.dev.base.repository.impl.BaseRepositoryImpl;
 import nvb.dev.model.Programmer;
 import nvb.dev.repository.ProgrammerRepository;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.List;
 import java.util.Optional;
 
 public class ProgrammerRepositoryImpl extends BaseRepositoryImpl<Long, Programmer> implements ProgrammerRepository {
@@ -23,6 +25,13 @@ public class ProgrammerRepositoryImpl extends BaseRepositoryImpl<Long, Programme
     @Override
     public Class<Programmer> getEntityClass() {
         return Programmer.class;
+    }
+
+    @Override
+    public Optional<List<Programmer>> findAllProgrammers() {
+        String hql = "from Programmer";
+        Query<Programmer> query = session.createQuery(hql, Programmer.class);
+        return Optional.ofNullable(query.getResultList());
     }
 
     @Override

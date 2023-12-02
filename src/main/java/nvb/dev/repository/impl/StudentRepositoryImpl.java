@@ -4,11 +4,13 @@ import nvb.dev.base.repository.impl.BaseRepositoryImpl;
 import nvb.dev.model.Student;
 import nvb.dev.repository.StudentRepository;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.List;
 import java.util.Optional;
 
 public class StudentRepositoryImpl extends BaseRepositoryImpl<Long, Student> implements StudentRepository {
@@ -23,6 +25,13 @@ public class StudentRepositoryImpl extends BaseRepositoryImpl<Long, Student> imp
     @Override
     public Class<Student> getEntityClass() {
         return Student.class;
+    }
+
+    @Override
+    public Optional<List<Student>> findAllStudents() {
+        String hql = "from Student";
+        Query<Student> query = session.createQuery(hql, Student.class);
+        return Optional.ofNullable(query.getResultList());
     }
 
     @Override
